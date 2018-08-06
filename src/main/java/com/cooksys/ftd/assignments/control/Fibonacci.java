@@ -23,8 +23,19 @@ public class Fibonacci {
      * @return the calculated element
      * @throws IllegalArgumentException if the given index is less than zero
      */
-    public static int atIndex(int i) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    public static int atIndex(int i) {
+    	if (i < 0) {
+    		throw new IllegalArgumentException();
+    	}
+    	if (i == 0) {
+    		return 1;
+    	}
+    	if (i == 1) {
+    		return 1;
+    	}
+        int[] fib = fibonacci(i);
+        
+        return fib[i-1]+fib[i-2];
         
         
         
@@ -40,8 +51,24 @@ public class Fibonacci {
      * @throws IllegalArgumentException if either the given start or end is negative, or if the
      *                                  given end is less than the given start
      */
-    public static int[] slice(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    public static int[] slice(int start, int end) {
+    	if (start < 0 || end < 0 || end < start) {
+    		throw new IllegalArgumentException();
+    	}
+    	int [] fib = fibonacci(end);
+    	int [] fibresult = new int[end - start];
+//    	for (int i = 0; i < end; i++) {
+    		//System.out.println(fib[i]+"fibi"+i+"i");
+//    	}
+    	//System.out.println(start + "s" + end + "e");
+    	
+    	for (int i = 0, j = start; j < end; i++, j++) {
+    		fibresult[i] = fib[j];
+    		
+    	}
+    	
+  
+        return fibresult;
     }
 
     /**
@@ -52,14 +79,18 @@ public class Fibonacci {
      * @throws IllegalArgumentException if the given count is negative
      */
     public static int[] fibonacci(int count) {
-    	System.out.println(count);
+    	
+    	
     	if (count == 1) {
     		int [] fib = new int[1];
     		fib[0] = 1;
     		return fib;
     	}
+    	else if (count < 0) {
+    		throw new IllegalArgumentException();
+    	}
     	else if (count == 0) {
-    		int [] fib = new int[0];
+    		int []fib = new int[0];
     		return fib;
     	}
     	else if (count == 2) {
@@ -74,10 +105,10 @@ public class Fibonacci {
     		fib[1] = 1;
     		for (int i = 2; i < count; i++) {
     			fib[i] = fib[i-1] + fib[i-2];
-    			System.out.println(fib[i] + "elseloop");
+    			
     		}
     		for (int i = 0; i < count; i++) {
-    			System.out.println(fib[i]+"fiblist");
+    			
     		}
     		return fib;
     	}
