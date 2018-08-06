@@ -25,6 +25,9 @@ public class Fibonacci {
      */
     public static int atIndex(int i) throws IllegalArgumentException {
         throw new NotImplementedException();
+        
+        
+        
     }
 
     /**
@@ -48,7 +51,36 @@ public class Fibonacci {
      * @return the beginning of the fibonacci sequence, up to the given count, as an array of int elements
      * @throws IllegalArgumentException if the given count is negative
      */
-    public static int[] fibonacci(int count) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    public static int[] fibonacci(int count) {
+    	System.out.println(count);
+    	if (count == 1) {
+    		int [] fib = new int[1];
+    		fib[0] = 1;
+    		return fib;
+    	}
+    	else if (count == 0) {
+    		int [] fib = new int[0];
+    		return fib;
+    	}
+    	else if (count == 2) {
+    		int [] fib = new int[2];
+    		fib[0] = 1;
+    		fib[1] = 1;
+    		return fib;
+    	}
+    	else {
+    		int [] fib = new int[count];
+    		fib[0] = 1;
+    		fib[1] = 1;
+    		for (int i = 2; i < count; i++) {
+    			fib[i] = fib[i-1] + fib[i-2];
+    			System.out.println(fib[i] + "elseloop");
+    		}
+    		for (int i = 0; i < count; i++) {
+    			System.out.println(fib[i]+"fiblist");
+    		}
+    		return fib;
+    	}
     }
+    
 }
