@@ -26,7 +26,13 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if b is zero
      */
     public static boolean divides(int a, int b) throws IllegalArgumentException {
-        throw new NotImplementedException();
+    	if (b == 0) {
+    		throw new IllegalArgumentException();
+    	}
+    	if (a%b == 0) {
+    		return true;
+    	}
+    	else return false;
     }
 
     /**
@@ -41,7 +47,18 @@ public class FizzBuzz {
      * @return a message according to the format above, or null if n is not divisible by either 3 or 5
      */
     public static String message(int n) {
-        throw new NotImplementedException();
+        
+        if (n%3 == 0 && n%5 != 0) {
+        	return n + ": Fizz";
+        }
+        else if (n%3 != 0 && n%5 == 0) {
+        	return n+ ": Buzz";
+        }
+        else if (n%3 == 0 && n%5 == 0) {
+        	return n+ ": FizzBuzz";
+        }
+        else return null;
+        
     }
 
     /**
@@ -55,7 +72,29 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the given end is less than the given start
      */
     public static String[] messages(int start, int end) throws IllegalArgumentException {
-        throw new NotImplementedException();
+        
+    	if (end < start) {
+    		throw new IllegalArgumentException();
+    	}
+    	System.out.println("start" + start + "end" + end);
+    	int arraySize = 0;
+    	for (int i = start; i < end; i++) {
+    		if (message(i) != null) {
+    			arraySize +=1;
+    		}
+    	}
+    	System.out.println(arraySize+"arraySize");
+    	String [] msg = new String[arraySize];
+    	for (int i = start, j = 0; i < end; i++) {
+    		if (message(i) != null) {
+    			msg[j] = message(i);
+    			System.out.println(msg[j]);
+    			j++;
+    		}
+    		//System.out.println(i);
+    	}
+    	
+        return msg;
     }
 
     /**
@@ -63,7 +102,10 @@ public class FizzBuzz {
      * the relevant messages to sysout
      */
     public static void main(String[] args) {
-        throw new NotImplementedException();
+        String [] msg = messages(0,116);
+        for (int i = 0; i<msg.length; i++) {
+        	System.out.println(msg[i]);
+        }
     }
 
 }
